@@ -103,7 +103,7 @@ const GlassCard = ({ children, className = '' }) => (
 // --- Konfigurasi Firebase ---
 const firebaseConfig = typeof __firebase_config !== 'undefined' 
     ? JSON.parse(__firebase_config) 
-    : { apiKey: "AIzaSyB0YgXKJOHnM69grObXUVFz7MGHlh-cjCg", authDomain: "my-project-1553267196543.firebaseapp.com", projectId: "my-project-1553267196543", storageBucket: "my-project-1553267196543.firebasestorage.app", messagingSenderId: "204615769880", appId: "1:204615769880:web:e075913abc658bde27886d" };
+    : { apiKey: "", authDomain: "", projectId: "", storageBucket: "", messagingSenderId: "", appId: "" };
 
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-finance-app';
 
@@ -228,7 +228,7 @@ export default function App() {
       
       try {
           const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-          const apiKey = "AIzaSyCWUWiHa-KyDp00Z52plQjrV899CNOQsNE";
+          const apiKey = "";
           const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
           const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
@@ -524,7 +524,7 @@ const ExpenseInputForm = ({ budgets, onAddExpense }) => {
         const prompt = `Analisis teks pengeluaran: "${textInput}". Ekstrak ke JSON. Kategori valid: [${categoryNames.map(c => `"${c}"`).join(', ')}]. Jika tidak cocok, gunakan "Lainnya".`;
         try {
             const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", responseSchema: { type: "OBJECT", properties: { name: { type: "STRING" }, amount: { type: "NUMBER" }, category: { type: "STRING", enum: categoryNames } }, required: ["name", "amount", "category"] } } };
-            const apiKey = "AIzaSyCWUWiHa-KyDp00Z52plQjrV899CNOQsNE";
+            const apiKey = "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
             if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
